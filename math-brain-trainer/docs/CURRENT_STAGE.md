@@ -1,7 +1,7 @@
 # CURRENT_STAGE
 
 ## Current Stage
-Stage 0 — Project Definition and Setup Planning
+Stage 2 — Navigation and Domain Foundation
 
 ## Current Status
 Проект ещё не реализован в коде.
@@ -26,3 +26,13 @@ Stage 0 — Project Definition and Setup Planning
 - есть базовая документация
 - есть единый prompt для GPT
 - есть готовность начать пошаговую реализацию
+
+## Что сделано
+- Vite + React + TypeScript создан
+- Tailwind подключён
+- структура src создана
+- AppShell реализован
+- HomePage реализован
+- ModeSelectPage реализован
+- доменные типы добавлены
+- trainingModes вынесены в typed-конфиг

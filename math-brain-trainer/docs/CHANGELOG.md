@@ -23,3 +23,17 @@
 - Реализация выбора режима
 - Реализация первой тренировочной сессии
 - Сохранение статистики в localStorage
+
+### Added
+- project initialized with Vite + React + TypeScript
+- Tailwind CSS connected
+- base src structure created
+- AppShell created
+- HomePage created
+- ModeSelectPage created
+- domain types for training and tasks added
+- typed training modes config added
+- ModeCard component extracted
+
+### Fixed
+- corrected component path structure for ModeCard

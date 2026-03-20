@@ -8,11 +8,11 @@
 ## Now
 
 ### Project Setup
-- [ ] Создать React + TypeScript + Vite проект
-- [ ] Проверить, что dev server запускается
-- [ ] Установить Tailwind CSS
-- [ ] Настроить Tailwind CSS
-- [ ] Очистить шаблонный Vite-код
+- описать TrainingSession
+- описать SessionResult
+- добавить выбор режима
+- сделать переход к первой тренировке
+- реализовать генерацию задач для addition
 
 ### Documentation
 - [x] Создать ARCHITECTURE.md
@@ -35,6 +35,18 @@
 - [ ] Создать папки services/
 - [ ] Создать папки utils/
 - [ ] Создать папки data/
+
+## Выполнено 
+- создать Vite-проект
+- установить Tailwind
+- очистить шаблон
+- создать базовые папки
+- сделать базовый layout
+- сделать HomePage
+- сделать экран выбора режима
+- описать TrainingMode
+- описать TechniqueType
+- описать MathTask
 
 ---
 

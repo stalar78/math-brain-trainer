@@ -147,3 +147,14 @@ src/
 - daily challenges
 - achievements
 - spaced repetition
+
+
+текущее состояние экранов
+app flow
+current navigation strategy
+
+
+сейчас навигация идёт через AppShell и локальный state
+текущие экраны: HomePage, ModeSelectPage
+ModeCard вынесен в отдельный UI-компонент
+режимы хранятся в src/data/trainingModes.ts

@@ -86,3 +86,11 @@ Backend не делаем на первом этапе.
 - проект должен быть понятным
 - MVP должен быть быстрым в реализации
 - преждевременная сложность замедлит развитие
+
+## D-010: No router in initial MVP shell
+
+## D-011: Use local app screen state for early navigation
+
+## D-012: Store training mode catalog in typed config
+
+## D-013: Separate mode card into reusable component

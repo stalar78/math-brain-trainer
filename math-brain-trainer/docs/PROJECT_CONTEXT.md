@@ -82,3 +82,10 @@ Personal web application for brain training through math practice
 - mobile-friendly design
 - daily workouts
 - technique lessons
+
+## Current Implementation Snapshot
+- есть стартовая UI-оболочка
+- пока без router
+- навигация на state
+- режимы уже описаны typed-конфигом
+- следующий шаг — training session model + first playable flow
