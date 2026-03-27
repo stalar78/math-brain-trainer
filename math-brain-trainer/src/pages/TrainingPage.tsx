@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { MathTask } from '../entities/task/types'
 import type { TrainingMode } from '../entities/training/types'
+import { checkAnswer } from '../features/training/checkAnswer'
 import { generateAdditionTask } from '../features/training/generateAdditionTask'
 
 interface TrainingPageProps {
@@ -15,6 +16,16 @@ export function TrainingPage({
     const [task] = useState<MathTask | null>(() =>
         selectedMode === 'addition' ? generateAdditionTask() : null
     )
+    const [userAnswer, setUserAnswer] = useState('')
+    const [isCorrect, setIsCorrect] = useState<boolean | null>(null)
+
+    const handleCheckAnswer = () => {
+        if (!task || userAnswer.trim() === '') {
+            return
+        }
+
+        setIsCorrect(checkAnswer(task.correctAnswer, Number(userAnswer)))
+    }
 
     return (
         <main className="min-h-screen bg-slate-950 text-slate-100">
@@ -43,16 +54,58 @@ export function TrainingPage({
                     </p>
 
                     {task ? (
-                        <div className="space-y-3">
+                        <div className="space-y-4">
                             <p className="text-sm leading-6 text-slate-300">
                                 Первая MVP-генерация пока доступна только для сложения.
                             </p>
+
                             <div className="rounded-2xl border border-cyan-900 bg-slate-950 p-5">
                                 <p className="mb-2 text-sm text-slate-400">Задача</p>
                                 <p className="text-3xl font-semibold tracking-tight">
                                     {task.expression}
                                 </p>
                             </div>
+
+                            <div className="flex flex-col gap-3 sm:flex-row">
+                                <input
+                                    type="number"
+                                    value={userAnswer}
+                                    onChange={(event) => {
+                                        setUserAnswer(event.target.value)
+                                        setIsCorrect(null)
+                                    }}
+                                    placeholder="Введите ответ"
+                                    className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-slate-100 outline-none transition placeholder:text-slate-500 focus:border-cyan-500"
+                                />
+
+                                <button
+                                    type="button"
+                                    onClick={handleCheckAnswer}
+                                    className="rounded-xl border border-cyan-700 bg-cyan-950 px-5 py-3 text-sm font-medium text-cyan-100 transition hover:bg-cyan-900"
+                                >
+                                    Проверить
+                                </button>
+                            </div>
+
+                            {isCorrect !== null ? (
+                                <div className="rounded-2xl border border-slate-800 bg-slate-950 p-4">
+                                    <p
+                                        className={`text-sm font-medium ${
+                                            isCorrect
+                                                ? 'text-emerald-400'
+                                                : 'text-rose-400'
+                                        }`}
+                                    >
+                                        {isCorrect ? 'Верно' : 'Неверно'}
+                                    </p>
+
+                                    {!isCorrect ? (
+                                        <p className="mt-2 text-sm text-slate-300">
+                                            Правильный ответ: {task.correctAnswer}
+                                        </p>
+                                    ) : null}
+                                </div>
+                            ) : null}
                         </div>
                     ) : (
                         <p className="text-sm leading-6 text-slate-300">
