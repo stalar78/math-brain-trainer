@@ -1,10 +1,17 @@
 import { trainingModes } from '../data/trainingModes'
+import type { TrainingMode } from '../entities/training/types'
 
 interface ModeSelectPageProps {
     onBack: () => void
+    onSelectMode: (mode: TrainingMode) => void
+    selectedMode: TrainingMode | null
 }
 
-export function ModeSelectPage({ onBack }: ModeSelectPageProps) {
+export function ModeSelectPage({
+    onBack,
+    onSelectMode,
+    selectedMode,
+}: ModeSelectPageProps) {
     return (
         <main className="min-h-screen bg-slate-950 text-slate-100">
             <div className="mx-auto flex min-h-screen w-full max-w-5xl flex-col px-6 py-12">
@@ -30,7 +37,12 @@ export function ModeSelectPage({ onBack }: ModeSelectPageProps) {
                         <button
                             key={mode.mode}
                             type="button"
-                            className="rounded-2xl border border-slate-800 bg-slate-900 p-5 text-left transition hover:border-slate-700 hover:bg-slate-800"
+                            onClick={() => onSelectMode(mode.mode)}
+                            className={`rounded-2xl border p-5 text-left transition ${
+                                selectedMode === mode.mode
+                                    ? 'border-cyan-500 bg-slate-800 shadow-lg shadow-cyan-950/40'
+                                    : 'border-slate-800 bg-slate-900 hover:border-slate-700 hover:bg-slate-800'
+                            }`}
                         >
                             <div className="mb-3 flex items-center justify-between gap-3">
                                 <h2 className="text-xl font-semibold">{mode.title}</h2>
