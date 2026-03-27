@@ -13,7 +13,7 @@ export function TrainingPage({
     selectedMode,
     onBack,
 }: TrainingPageProps) {
-    const [task] = useState<MathTask | null>(() =>
+    const [task, setTask] = useState<MathTask | null>(() =>
         selectedMode === 'addition' ? generateAdditionTask() : null
     )
     const [userAnswer, setUserAnswer] = useState('')
@@ -25,6 +25,16 @@ export function TrainingPage({
         }
 
         setIsCorrect(checkAnswer(task.correctAnswer, Number(userAnswer)))
+    }
+
+    const handleNextTask = () => {
+        if (!task) {
+            return
+        }
+
+        setTask(generateAdditionTask())
+        setUserAnswer('')
+        setIsCorrect(null)
     }
 
     return (
@@ -84,6 +94,14 @@ export function TrainingPage({
                                     className="rounded-xl border border-cyan-700 bg-cyan-950 px-5 py-3 text-sm font-medium text-cyan-100 transition hover:bg-cyan-900"
                                 >
                                     Проверить
+                                </button>
+
+                                <button
+                                    type="button"
+                                    onClick={handleNextTask}
+                                    className="rounded-xl border border-slate-700 bg-slate-950 px-5 py-3 text-sm font-medium text-slate-100 transition hover:bg-slate-800"
+                                >
+                                    Следующая задача
                                 </button>
                             </div>
 
