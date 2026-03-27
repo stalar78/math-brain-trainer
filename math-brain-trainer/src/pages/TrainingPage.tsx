@@ -1,0 +1,44 @@
+import type { TrainingMode } from '../entities/training/types'
+
+interface TrainingPageProps {
+    selectedMode: TrainingMode
+    onBack: () => void
+}
+
+export function TrainingPage({
+    selectedMode,
+    onBack,
+}: TrainingPageProps) {
+    return (
+        <main className="min-h-screen bg-slate-950 text-slate-100">
+            <div className="mx-auto flex min-h-screen w-full max-w-4xl flex-col px-6 py-12">
+                <div className="mb-8 flex items-center justify-between gap-4">
+                    <div>
+                        <p className="mb-2 text-sm text-slate-400">Math Brain Trainer</p>
+                        <h1 className="text-3xl font-bold tracking-tight">
+                            Тренировка
+                        </h1>
+                    </div>
+
+                    <button
+                        type="button"
+                        onClick={onBack}
+                        className="rounded-xl border border-slate-700 bg-slate-900 px-4 py-2 text-sm text-slate-200 transition hover:bg-slate-800"
+                    >
+                        Назад
+                    </button>
+                </div>
+
+                <section className="rounded-3xl border border-slate-800 bg-slate-900 p-6">
+                    <p className="mb-3 text-sm text-slate-400">Выбранный режим</p>
+                    <p className="mb-4 text-2xl font-semibold capitalize">
+                        {selectedMode}
+                    </p>
+                    <p className="text-sm leading-6 text-slate-300">
+                        Генерация задач будет следующим шагом разработки.
+                    </p>
+                </section>
+            </div>
+        </main>
+    )
+}
