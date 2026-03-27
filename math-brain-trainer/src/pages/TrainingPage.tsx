@@ -18,13 +18,26 @@ export function TrainingPage({
     )
     const [userAnswer, setUserAnswer] = useState('')
     const [isCorrect, setIsCorrect] = useState<boolean | null>(null)
+    const [totalAnswered, setTotalAnswered] = useState(0)
+    const [correctCount, setCorrectCount] = useState(0)
+    const [wrongCount, setWrongCount] = useState(0)
 
     const handleCheckAnswer = () => {
         if (!task || userAnswer.trim() === '') {
             return
         }
 
-        setIsCorrect(checkAnswer(task.correctAnswer, Number(userAnswer)))
+        const result = checkAnswer(task.correctAnswer, Number(userAnswer))
+
+        setIsCorrect(result)
+        setTotalAnswered((current) => current + 1)
+
+        if (result) {
+            setCorrectCount((current) => current + 1)
+            return
+        }
+
+        setWrongCount((current) => current + 1)
     }
 
     const handleNextTask = () => {
@@ -68,6 +81,35 @@ export function TrainingPage({
                             <p className="text-sm leading-6 text-slate-300">
                                 Первая MVP-генерация пока доступна только для сложения.
                             </p>
+
+                            <div className="grid gap-3 sm:grid-cols-3">
+                                <div className="rounded-2xl border border-slate-800 bg-slate-950 p-4">
+                                    <p className="text-xs uppercase tracking-wide text-slate-500">
+                                        Отвечено
+                                    </p>
+                                    <p className="mt-2 text-2xl font-semibold">
+                                        {totalAnswered}
+                                    </p>
+                                </div>
+
+                                <div className="rounded-2xl border border-emerald-900 bg-slate-950 p-4">
+                                    <p className="text-xs uppercase tracking-wide text-slate-500">
+                                        Верно
+                                    </p>
+                                    <p className="mt-2 text-2xl font-semibold text-emerald-400">
+                                        {correctCount}
+                                    </p>
+                                </div>
+
+                                <div className="rounded-2xl border border-rose-900 bg-slate-950 p-4">
+                                    <p className="text-xs uppercase tracking-wide text-slate-500">
+                                        Неверно
+                                    </p>
+                                    <p className="mt-2 text-2xl font-semibold text-rose-400">
+                                        {wrongCount}
+                                    </p>
+                                </div>
+                            </div>
 
                             <div className="rounded-2xl border border-cyan-900 bg-slate-950 p-5">
                                 <p className="mb-2 text-sm text-slate-400">Задача</p>
