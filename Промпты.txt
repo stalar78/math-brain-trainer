@@ -1,0 +1,17 @@
+Сделай следующее:
+1. Посмотри какие файлы нужно обновить:
+START_HERE.md
+TASKS.md
+PROMPT_RULES.md
+ROADMAP.md
+README.md
+CONTRIBUTING.md
+PROJECT_CONTEXT.md
+DECISIONS.md
+TERMS.md
+GPT_PROJECT_INSTRUCTION.md
+CHANGELOG.md
+CURRENT_STAGE.md
+ARCHITECTURE.md
+2. Какие файлы добавить в источники
+3. Закоммитить данный этап разработки
